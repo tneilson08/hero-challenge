@@ -1,0 +1,166 @@
+<section class="flex-container">
+  <div id="hero-content" class="hero-content-center">
+    <h1 class="hero-title"> {{ section.settings.title }} </h1>
+    <p class="hero-copy"> {{ section.settings.copy }} </p>
+    <button class="cta"> {{ section.settings.cta }} </button>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Hero",
+    "settings": [
+
+		{
+			"id": "title",
+			"type": "text",
+			"label": "Title",
+			"default": "Hero Title"
+		},
+		
+		{
+			"id": "copy",
+			"type": "text",
+			"label": "Copy",
+			"default": "In lorem leo, sodales et ullamcorper tempor, facilisis id nibh. Maecenas nibh risus, rutrum nec tellus sed, pharetra gravida nulla. Proin imperdiet"
+		},
+
+		{
+			"id": "cta",
+			"type": "text",
+			"label": "Button text",
+			"default": "READ MORE"
+		},
+
+		{
+			"id": "align",
+			"type": "select",
+			"options": [
+							{"value": "center", "label": "Center"},
+							{"value": "left", "label": "Left"},
+							{"value": "right", "label": "Right"}
+						],
+			"label": "Text Alignment",
+			"default": "center"
+		}
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  background-image: url('https://cdn.shopify.com/s/files/1/0543/5218/3485/files/hero_img.png?v=1614213425');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 85% 100%;
+  font-family: 'Roboto', sans-serif;
+  padding: 180px 0;
+}
+
+.hero-content-center {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  padding: 0 50px;
+}
+
+.hero-content-left {
+  text-align: left;
+  color: #fff;
+  width: 50%;
+  padding: 0 50px;
+}
+
+.hero-content-right {
+  text-align: left;
+  color: #fff;
+  width: 50%;
+  padding: 0 50px;
+  margin-left: auto;
+}
+
+.hero-title {
+  font-size: 46px;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero-copy {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 300;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.cta {
+  color: #fff;
+  background: #57ad68;
+  font-size: 20px;
+  font-weight: 300;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 40px;
+  transition: 0.35s ease-in-out;
+}
+
+.cta:hover {
+  background: #1a742c;
+}
+
+/* -------------------------- MEDIA QUERIES -------------------------- */
+/* -------------------------- MEDIA QUERIES -------------------------- */
+/* -------------------------- MEDIA QUERIES -------------------------- */
+
+@media (max-width: 780px) {
+  .hero-content-center {
+    width: 100%;
+  	padding: 0 0;
+  }
+
+  .hero-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .hero-copy {
+    font-size: 18px;
+    font-weight: 300;
+    padding: 0 40px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+}
+
+
+{% endstylesheet %}
+
+
+
+{% javascript %}
+	
+{% if settings.align == 'center' %}
+<!-- Remove the current class from id 'hero-content', add the 'hero-content-center' class (however, 'hero-content-center' is the default) -->
+{% elsif settings.align == 'left' %}
+<!-- Remove the current class from id 'hero-content', add the 'hero-content-left' class -->
+{% elsif settings.align == 'right' %}
+<!-- Remove the current class from id 'hero-content', add the 'hero-content-right' class -->
+{% endif %}
+
+<!-- If statement stating that if the media query is at 780px, the class of id 'hero-content' will be hero-content-center -->
+{% endjavascript %}
